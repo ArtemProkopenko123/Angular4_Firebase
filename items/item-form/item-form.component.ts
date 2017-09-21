@@ -18,6 +18,7 @@ export class ItemFormComponent implements OnInit {
   createItem() {
     this.itemSvc.createItem(this.item)
     this.item.title = '' // reset item
+    window.location.href = '/items'
   }
   ngOnInit() {
   }

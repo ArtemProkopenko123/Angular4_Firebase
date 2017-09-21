@@ -9,7 +9,7 @@ import { Item } from '../shared/item';
 })
 export class ItemsListComponent implements OnInit {
 
-  public items: FirebaseListObservable<Item[]>;
+  items: FirebaseListObservable<Item[]>;
 
   constructor(private itemSvc: ItemService) {
     

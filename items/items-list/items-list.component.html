@@ -1,9 +1,12 @@
-<h1>Items</h1>
-<div *ngFor="let item of items | async" >
-  <item-detail [item]='item'></item-detail>
+<br><br>
+<button type="button" class="btn  btn-link ">
+  <a routerLink="create" >Create Item</a>
+</button>
+<div class="row">
+    
+  <div class="col-md-4" *ngFor="let item of items | async" >
+      <item-detail [item]='item'></item-detail>
+  </div>
 </div>
-
 <br>
-<button (click)='deleteItems()'>Delete Entire List</button>
-<hr>
-<item-form></item-form>
+<button  class="btn btn-primary" (click)='deleteItems()'>Delete Entire List</button>
