@@ -11,7 +11,9 @@ export class ItemService {
   items: FirebaseListObservable<Item[]> = null; //  list of objects
   item: FirebaseObjectObservable<Item> = null; //   single object
   ItemsKey: number;
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase) {
+    
+  }
 
   getItemsList(query={}): FirebaseListObservable<Item[]> {
     this.items = this.db.list(this.basePath, {

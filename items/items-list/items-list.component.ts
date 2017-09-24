@@ -20,7 +20,7 @@ export class ItemsListComponent implements OnInit {
   }
   
   deleteItems() {
-    let conf = confirm("Are you sure");
+    let conf = confirm("Are you sure ?");
     if (conf){  this.itemSvc.deleteAll()}
   }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { ItemService } from '../shared/item.service';
 import { Item } from '../shared/item';
 @Component({
@@ -10,9 +9,7 @@ import { Item } from '../shared/item';
 export class ItemDetailComponent implements OnInit {
 
   @Input() item: Item;
-  constructor(private itemSvc: ItemService) {
-    
-   }
+  constructor(private itemSvc: ItemService) {}
 
   updateTimeStamp() {
     let date = new Date().getTime()

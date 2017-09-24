@@ -1,12 +1,13 @@
 
 
 <input placeholder="Item Title" class="form-control" [(ngModel)]="item.title" required minlength="2" maxlength="23" #title='ngModel' autofocus>
-
+<input placeholder="Item Body" class="form-control" [(ngModel)]="item.body" required minlength="20" #body='ngModel'>
+<input placeholder="Item Picture" class="form-control" [(ngModel)]="item.picture" required minlength="5" #picture='ngModel'>
 <div *ngIf="title.dirty">
-  <span *ngIf='title.errors; then errors else valid'>template renders here...</span>
+  <span *ngIf='title.errors || body.errors || picture.errors; then errors else valid'>template renders here...</span>
 </div>
 
-<button class="btn btn-primary" (click)='createItem()' [disabled]="!title.valid">Create</button>
+<button class="btn btn-primary" (click)='createItem()' [disabled]="!picture.valid || !title.valid || !body.valid">Create</button>
 
 <ng-template #valid>
 <p class="text-success">looks good!</p>
@@ -15,3 +16,4 @@
 <ng-template #errors>
 <p class="text-danger">form contains errors!</p>
 </ng-template>
+

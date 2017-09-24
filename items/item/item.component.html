@@ -1,0 +1,13 @@
+
+
+
+
+<div class="itemBg" *ngIf="value.picture" [ngStyle]="{'background-image': 'url(' + value.picture + ')'}">
+    <br>
+    {{value.title}}
+    <br>
+    <br>
+    {{value.body}}
+<br>
+<p>{{ value.timeStamp | date: 'medium' }}</p> 
+</div>

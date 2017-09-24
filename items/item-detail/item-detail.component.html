@@ -1,15 +1,14 @@
 
-<p [class.active]="item.active">{{ item.title || 'missing title' }}</p>
-{{ item.body }}<br>
-{{ item.$key }}
-<br>
-{{ item.timeStamp | date: 'medium' }}
-<br>
-<button (click)='updateTimeStamp()'>Update Timestamp</button>
-
-<button *ngIf='item.active' (click)='updateActive(false)'>Mark Complete</button>
-
-<button *ngIf='!item.active' (click)='updateActive(true)'>Mark Active</button>
-
-<button (click)='deleteItem()' >Delete</button>
-<hr>
+<div class="itemBg" [style.backgroundImage]="'url('+ item.picture +')'">
+    <br>
+    <h3 class="text-center" [class.active]="item.active"><a  [routerLink]="item.$key">{{ item.title || 'missing title' }}</a></h3>
+    <br>
+    <br>
+    <div class="controlItem">   
+        <p>{{ item.timeStamp | date: 'medium' }}</p> 
+        <button (click)='updateTimeStamp()'>Update Timestamp</button>
+        <button *ngIf='item.active' (click)='updateActive(false)'>Mark Complete</button>
+        <button *ngIf='!item.active' (click)='updateActive(true)'>Mark Active</button>
+        <button (click)='deleteItem()' >Delete</button>
+    </div>  
+</div>

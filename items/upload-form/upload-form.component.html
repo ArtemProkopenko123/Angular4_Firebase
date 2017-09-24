@@ -1,0 +1,49 @@
+<br>
+<div *ngIf="currentUpload">
+    <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+
+    Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+</div>
+
+
+<div class="box">
+
+  <h3>Single File Upload</h3>
+
+    <label>
+       <input type="file" class="button" (change)="detectFiles($event)">
+    </label>
+    
+    <select id="itemId">
+        <option value="">Choise item</option>
+        <option value="{{item.$key}}" *ngFor="let item of items | async">{{item.$key}}</option>
+    </select>
+ 
+    <button class="button is-primary"
+            [disabled]="!selectedFiles"
+            (click)="uploadSingle()">
+            Upload Single
+    </button>
+
+    <hr>
+<!--
+    <h3>Multiple File Upload</h3>
+
+    <label>
+       <input type="file" class="button" (change)="detectFiles($event)" multiple>
+    </label>
+
+
+      <button class="button is-primary"
+              [disabled]="!selectedFiles"
+              (click)="uploadMulti()">
+
+        Upload Multiple
+      </button>
+      -->
+</div>
+
+<ul *ngFor="let upload of uploads | async">
+    <li> <a  href="{{upload.url}}" download >{{upload.name}}</a> <br>{{upload.timeStamp | date: 'medium' }}</li>
+</ul>
+

@@ -1,3 +1,14 @@
-p.active {
+.active {
     background-color: red
+}
+
+.itemBg{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 250px;
+}
+.controlItem {
+    position: absolute;
+    bottom: 0;
 }

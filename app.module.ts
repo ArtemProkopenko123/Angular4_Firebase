@@ -1,3 +1,4 @@
+import { UploadService } from './items/shared/upload.service';
 import { NgModule } from '@angular/core';
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './page-not-found.component';
@@ -10,10 +11,12 @@ import { AppComponent } from './app.component';
 import { ItemsListComponent } from './items/items-list/items-list.component';
 import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 import { ItemFormComponent } from './items/item-form/item-form.component';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import { ItemService } from './items/shared/item.service'
 import { AngularFireModule } from 'angularfire2';
 import { CreateComponent } from './items/create/create.component';
+import { ItemComponent } from './items/item/item.component';
+import { UploadFormComponent } from './items/upload-form/upload-form.component';
 
 
 @NgModule({
@@ -25,16 +28,17 @@ import { CreateComponent } from './items/create/create.component';
     PageNotFoundComponent,
     WelcomeComponent,
     CreateComponent,
+    ItemComponent,
+    UploadFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRouterModule,
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireDatabaseModule
   ],
-  providers: [ItemService],
+  providers: [ItemService, UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
