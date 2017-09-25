@@ -1,0 +1,10 @@
+<upload-form></upload-form>
+
+<h3>File Uploads</h3>
+
+<ul id="uploads-list">
+  <li *ngFor="let upload of uploads | async">
+    <upload-detail [upload]='upload'></upload-detail>
+  </li>
+</ul>
+

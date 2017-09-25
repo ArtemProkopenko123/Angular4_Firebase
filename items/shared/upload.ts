@@ -4,6 +4,7 @@ export class Upload {
     file:File;
     name:string;
     url:string;
+    size: number;
     items: string;
     progress:number;
     timeStamp: number = new Date().getTime()

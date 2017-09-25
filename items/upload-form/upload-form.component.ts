@@ -1,3 +1,4 @@
+
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Component, OnInit } from '@angular/core';
 import { UploadService } from '../shared/upload.service';
@@ -16,14 +17,15 @@ export class UploadFormComponent implements OnInit {
 
   selectedFiles: FileList;
   currentUpload: Upload;
-  uploads: FirebaseListObservable<Upload[]>;
   items: FirebaseListObservable<Item[]>;
   constructor(
     private upSvc: UploadService,
     private itemSvc: ItemService) {}
 
+    
+    
   ngOnInit() {
-    this.uploads = this.upSvc.getUploads({limitToLast: 5});
+    
     this.items = this.itemSvc.getItemsList();
   }
 
@@ -34,16 +36,13 @@ export class UploadFormComponent implements OnInit {
   uploadSingle() {
     let file = this.selectedFiles.item(0);
     var itemsId:string = (<HTMLInputElement>document.getElementById('itemId')).value;
-    this.currentUpload = new Upload(file);
-    this.currentUpload.items = itemsId;
-    this.upSvc.pushUpload(this.currentUpload);
-
-    /*
     if(itemsId){
-      this.items.update(itemsId, { photo: 'NICE2'})
+      this.currentUpload = new Upload(file);
+      this.currentUpload.items = itemsId;
+      this.upSvc.pushUpload(this.currentUpload);
     } else {
-      alert("Choise item")
-    }*/
+      alert("Choise item");
+    }
   }
 /*
   uploadMulti() {
@@ -58,7 +57,4 @@ export class UploadFormComponent implements OnInit {
   }
 */
 
-  showVal(){
-
-  }
 }

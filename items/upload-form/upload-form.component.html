@@ -1,15 +1,11 @@
-<br>
+<h2>Upload file</h2>
 <div *ngIf="currentUpload">
     <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
 
     Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
 </div>
 
-
 <div class="box">
-
-  <h3>Single File Upload</h3>
-
     <label>
        <input type="file" class="button" (change)="detectFiles($event)">
     </label>
@@ -43,7 +39,5 @@
       -->
 </div>
 
-<ul *ngFor="let upload of uploads | async">
-    <li> <a  href="{{upload.url}}" download >{{upload.name}}</a> <br>{{upload.timeStamp | date: 'medium' }}</li>
-</ul>
+
 

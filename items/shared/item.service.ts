@@ -11,9 +11,7 @@ export class ItemService {
   items: FirebaseListObservable<Item[]> = null; //  list of objects
   item: FirebaseObjectObservable<Item> = null; //   single object
   ItemsKey: number;
-  constructor(private db: AngularFireDatabase) {
-    
-  }
+  constructor(private db: AngularFireDatabase) {}
 
   getItemsList(query={}): FirebaseListObservable<Item[]> {
     this.items = this.db.list(this.basePath, {
@@ -43,7 +41,7 @@ createItem(item: Item): void  {
      .catch(error => this.handleError(error))
      this.getItemsCount();
  }
- // Update an existing item
+ // Update item
  updateItem(key: string, value: any): void {
     this.items.update(key, value)
      .catch(error => this.handleError(error))
@@ -61,7 +59,7 @@ createItem(item: Item): void  {
        .catch(error => this.handleError(error))
     this.getItemsCount();
  }
- // Default error handling for all actions
+ //  error handling 
  private handleError(error) {
    console.log(error)
  }

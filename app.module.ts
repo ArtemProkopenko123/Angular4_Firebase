@@ -1,3 +1,5 @@
+import { UploadsListComponent } from './items/uploads-list/uploads-list.component';
+import { UploadDetailComponent } from './items/upload-detail/upload-detail.component';
 import { UploadService } from './items/shared/upload.service';
 import { NgModule } from '@angular/core';
 import { WelcomeComponent } from './home/welcome.component';
@@ -11,7 +13,6 @@ import { AppComponent } from './app.component';
 import { ItemsListComponent } from './items/items-list/items-list.component';
 import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 import { ItemFormComponent } from './items/item-form/item-form.component';
-
 import { ItemService } from './items/shared/item.service'
 import { AngularFireModule } from 'angularfire2';
 import { CreateComponent } from './items/create/create.component';
@@ -30,6 +31,8 @@ import { UploadFormComponent } from './items/upload-form/upload-form.component';
     CreateComponent,
     ItemComponent,
     UploadFormComponent,
+    UploadDetailComponent,
+    UploadsListComponent
   ],
   imports: [
     BrowserModule,
