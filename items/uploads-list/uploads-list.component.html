@@ -1,9 +1,10 @@
 <upload-form></upload-form>
 
 <h3>File Uploads</h3>
+<div id="sort-btn">Soted by: <button class="btn btn-link" [class.active]="filterBy=='size'" (click)="filterBy='size'">Size</button><button class="btn btn-link" [class.active]="filterBy=='name'" (click)="filterBy='name'">Name</button></div>
 
 <ul id="uploads-list">
-  <li *ngFor="let upload of uploads | async">
+  <li *ngFor="let upload of uploads | uploadListPipe:filterBy | async ">
     <upload-detail [upload]='upload'></upload-detail>
   </li>
 </ul>

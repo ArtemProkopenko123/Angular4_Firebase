@@ -1,4 +1,6 @@
 
+<div class="row">
+    <div class="col-md-9 pull-left">
 <button (click)='deleteUpload(upload)' class="button is-danger is-small">
     Delete
 </button>
@@ -7,5 +9,10 @@
 Photo for items: {{upload.items}}
 <br>
 Size: {{upload.size}}
+
 <br>
-<br>
+</div>
+<div class="col-md-3 text-center">
+    <img   height="80" src="{{upload.url}}" alt="">
+</div>
+</div>

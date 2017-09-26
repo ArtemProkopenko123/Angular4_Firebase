@@ -18,6 +18,7 @@ import { AngularFireModule } from 'angularfire2';
 import { CreateComponent } from './items/create/create.component';
 import { ItemComponent } from './items/item/item.component';
 import { UploadFormComponent } from './items/upload-form/upload-form.component';
+import { UploadListPipe } from './items/shared/upload-list.pipe';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { UploadFormComponent } from './items/upload-form/upload-form.component';
     ItemComponent,
     UploadFormComponent,
     UploadDetailComponent,
-    UploadsListComponent
+    UploadsListComponent,
+    UploadListPipe
   ],
   imports: [
     BrowserModule,

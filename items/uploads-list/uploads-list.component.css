@@ -1,5 +1,9 @@
-ul li {
+ul#uploads-list li {
     list-style-type: decimal;
     margin: 10px 0;
     
+}
+div#sort-btn button.active {
+    text-decoration: underline; 
+    color: red; 
 }
