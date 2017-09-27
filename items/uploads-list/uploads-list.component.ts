@@ -17,9 +17,7 @@ export class UploadsListComponent implements OnInit {
   constructor(private upSvc: UploadService) {}
 
   ngOnInit() {
-    this.uploads = this.upSvc.getUploads();
-
-    
+    this.uploads = this.upSvc.getUploads(); 
   }
 
 }

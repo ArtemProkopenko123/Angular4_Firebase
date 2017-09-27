@@ -1,7 +1,25 @@
 <upload-form></upload-form>
 
 <h3>File Uploads</h3>
-<div id="sort-btn">Soted by: <button class="btn btn-link" [class.active]="filterBy=='size'" (click)="filterBy='size'">Size</button><button class="btn btn-link" [class.active]="filterBy=='name'" (click)="filterBy='name'">Name</button></div>
+<div id="sort-btn">Soted by: 
+  <button class="btn " [class.active]="filterBy==' '" (click)="filterBy=''">Reset</button> 
+  
+  <button class="btn" *ngIf="filterBy !== 'size'" [class.active]="filterBy=='sizeRev' || filterBy=='sizeRev'" (click)="filterBy='size'">Size
+    <img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-up-01-16.png" alt="">
+  </button>
+
+  <button class="btn" *ngIf="filterBy == 'size'" [class.active]="filterBy=='size' || filterBy=='sizeRev'" (click)="filterBy='sizeRev'">Size
+    <img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-down-01-16.png" alt="">
+  </button>
+
+  <button class="btn" *ngIf="filterBy !== 'name'" [class.active]="filterBy=='nameRev'" (click)="filterBy='name'">Name
+    <img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-up-01-16.png" alt="">
+  </button>
+  <button class="btn" *ngIf="filterBy == 'name'"  [class.active]="filterBy=='name'" (click)="filterBy='nameRev'">Name
+      <img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-down-01-16.png" alt="">
+    </button>
+</div>
+
 
 <ul id="uploads-list">
   <li *ngFor="let upload of uploads | uploadListPipe:filterBy | async ">

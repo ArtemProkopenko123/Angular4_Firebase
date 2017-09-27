@@ -6,4 +6,5 @@ ul#uploads-list li {
 div#sort-btn button.active {
     text-decoration: underline; 
     color: red; 
+    cursor: default;
 }

@@ -8,8 +8,8 @@ export class ItemService {
 
   private basePath: string = '/items';
 
-  items: FirebaseListObservable<Item[]> = null; //  list of objects
-  item: FirebaseObjectObservable<Item> = null; //   single object
+  items: FirebaseListObservable<Item[]> = null; // list of objects
+  item: FirebaseObjectObservable<Item> = null; // single object
   ItemsKey: number;
   constructor(private db: AngularFireDatabase) {}
 
