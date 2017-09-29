@@ -1,3 +1,4 @@
+import { FormConstructorService } from './form-constructor/shared/form-constructor.service';
 import { UploadsListComponent } from './items/uploads-list/uploads-list.component';
 import { UploadDetailComponent } from './items/upload-detail/upload-detail.component';
 import { UploadService } from './items/shared/upload.service';
@@ -19,6 +20,7 @@ import { CreateComponent } from './items/create/create.component';
 import { ItemComponent } from './items/item/item.component';
 import { UploadFormComponent } from './items/upload-form/upload-form.component';
 import { UploadListPipe } from './items/shared/upload-list.pipe';
+import { FormConstructorComponent } from './form-constructor/form-constructor.component';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { UploadListPipe } from './items/shared/upload-list.pipe';
     UploadFormComponent,
     UploadDetailComponent,
     UploadsListComponent,
-    UploadListPipe
+    UploadListPipe,
+    FormConstructorComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { UploadListPipe } from './items/shared/upload-list.pipe';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule
   ],
-  providers: [ItemService, UploadService],
+  providers: [ItemService, UploadService, FormConstructorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,74 @@
+<h1>FORMS CONSTRUCTOR</h1>
+
+<button class="btn" [class.active]="start" (click)="start = !start">Add</button>
+
+<div class="row">
+  <div *ngIf="start" id="formWrap" class="col-md-6">
+    <label>
+      <b>Id</b> of form<span class="red">*</span>: <input type="text" [(ngModel)]="form.id" required>
+    </label>
+    <label>
+      <b>Title</b> of form<span class="red">*</span> <input type="text" [(ngModel)]="form.title" required>
+    </label>
+    <label>
+      <b>Text</b> in form: <input type="text" [(ngModel)]="form.massageInForm">
+    </label>
+    
+    <!--
+    <label>
+      <b>Select tag name:</b>
+      <select [(ngModel)]="form.inputs.tagName" required>
+        <option value="input" selected>Input</option>
+        <option value="textarea" selected>textarea</option>
+      </select>
+    </label>
+    <label *ngIf="form.inputs.tagName == 'input'">
+      <b>Select type of input</b>
+      <select [(ngModel)]="form.inputs.type" required>
+        <option value="text" selected>Text</option>
+        <option value="checkbox" selected>Checkbox</option>
+        <option value="file" selected>File</option>
+        <option value="password" selected>Password</option>
+      </select>
+    </label>
+    <label *ngIf="form.inputs.tagName">
+        Enter placeholder: <input type="text" [(ngModel)]="form.inputs.placeholder">
+    </label>
+    <label *ngIf="form.inputs.tagName">
+        Enter text before input field: <input type="text" [(ngModel)]="form.inputs.inputText">
+    </label>
+  -->
+    <button  (click)="addInput()">
+      Add field
+    </button>
+    <button>Save</button>
+
+
+    <div *ngFor="let new of form.inputs; let k = index">
+      <input type="text" [(ngModel)]="new[k].placeholder" >
+    {{new[k].placeholder}}
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  <div class="col-md-6 Formpreview" *ngIf="start">
+
+    Form preview. <span *ngIf="form.id">Id: {{form.id}}</span>
+    <div *ngIf="form.title" class="title text-center"><h4>{{form.title}}</h4></div>
+    <p class="text-center" *ngIf="form.massageInForm">{{form.massageInForm}}</p>
+<!--
+    <div *ngIf="form.inputs.tagName == 'input'">
+      <label><span *ngIf="form.inputs.inputText">{{form.inputs.inputText}}:</span>
+          <input type="{{form.inputs.type}}" placeholder="{{form.inputs.placeholder}}">
+      </label>
+      <div [innerHtml]="htmlText"></div>
+    </div>
+  -->
+  </div>
+</div>

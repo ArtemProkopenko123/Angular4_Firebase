@@ -1,0 +1,22 @@
+button.active {
+    background-color: red;
+}
+span.red{
+    color: red;
+    font-weight: bold
+}
+#formWrap label,
+.Formpreview label{
+    display: block;
+}
+#formWrap label input, 
+.Formpreview label input{
+    width: 100%;
+}
+.Formpreview{
+    border-left: 1px solid #969696;
+}
+input[type='checkbox']{
+    display: inline;
+    width: auto !important;
+}

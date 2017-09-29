@@ -20,14 +20,9 @@ export class UploadFormComponent implements OnInit {
   items: FirebaseListObservable<Item[]>;
   constructor(
     private upSvc: UploadService,
-    private itemSvc: ItemService) {
-      
-    }
+    private itemSvc: ItemService) { }
 
-    
-    
   ngOnInit() {
-    
     this.items = this.itemSvc.getItemsList();
   }
 

@@ -1,3 +1,4 @@
+import { FormConstructorComponent } from './form-constructor/form-constructor.component';
 import { UploadsListComponent } from './items/uploads-list/uploads-list.component';
 import { ItemComponent } from './items/item/item.component';
 import { CreateComponent } from './items/create/create.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: 'items', component: ItemsListComponent },
     { path: 'items/create',component: CreateComponent},
     { path: 'items/upload',component: UploadsListComponent},
+    { path: 'form-create',component: FormConstructorComponent},
     { path: 'items/:id', component: ItemComponent },
     { path: 'home', component: WelcomeComponent},
     { path: '**', component: PageNotFoundComponent }
