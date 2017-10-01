@@ -27,6 +27,6 @@ export class FormCreaterComponent  implements OnInit {
      event.target.classList.remove('error');
   }
   checkForm(){
-    this.formSvc.checkForm();
+    this.formSvc.checkForm(this.formValue);
   }
 }

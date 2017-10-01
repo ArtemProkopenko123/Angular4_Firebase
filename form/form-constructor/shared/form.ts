@@ -5,9 +5,9 @@ export class Form {
     massageInForm: string;
     inputs = Array();
     active: boolean;
-    timeStamp: number;
     btnSubmitText: string;
     resetBtn: true;
+    timeStamp: number;
 };
 
 export class FormInput {
@@ -19,4 +19,5 @@ export class FormInput {
     name?: string;
     inputText: string;
     require: boolean = false;
+    value: string;
 }

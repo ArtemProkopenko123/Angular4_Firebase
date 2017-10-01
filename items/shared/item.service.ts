@@ -33,32 +33,31 @@ export class ItemService {
   getItem(key: string): FirebaseObjectObservable<Item> {
     const itemPath =  `${this.basePath}/${key}`;
     this.item = this.db.object(itemPath)
-    return this.item
-    
+    return this.item 
   }
-createItem(item: Item): void  {
+  createItem(item: Item): void  {
   this.items.set(`${this.ItemsKey + 1}`, item)
      .catch(error => this.handleError(error))
      this.getItemsCount();
- }
- // Update item
- updateItem(key: string, value: any): void {
+  }
+  // Update item
+  updateItem(key: string, value: any): void {
     this.items.update(key, value)
-     .catch(error => this.handleError(error))
+      .catch(error => this.handleError(error))
     this.getItemsCount();
- }
- // Deletes a single item
- deleteItem(key: string): void {
+  }
+  // Deletes a single item
+  deleteItem(key: string): void {
     this.items.remove(key)
-       .catch(error => this.handleError(error))
+        .catch(error => this.handleError(error))
     this.getItemsCount();
- }
- // Deletes the entire list of items
- deleteAll(): void {
+  }
+  // Deletes the entire list of items
+  deleteAll(): void {
     this.items.remove()
-       .catch(error => this.handleError(error))
+        .catch(error => this.handleError(error))
     this.getItemsCount();
- }
+  }
  //  error handling 
  private handleError(error) {
    console.log(error)

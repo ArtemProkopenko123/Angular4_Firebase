@@ -1,5 +1,6 @@
-import { FormCreaterService } from './form-creater/shared/form-creater.service';
-import { FormConstructorService } from './form-constructor/shared/form-constructor.service';
+import { FormResultService } from './form/form-result/shared/form-result.service';
+import { FormCreaterService } from './form/form-creater/shared/form-creater.service';
+import { FormConstructorService } from './form/form-constructor/shared/form-constructor.service';
 import { UploadsListComponent } from './items/uploads-list/uploads-list.component';
 import { UploadDetailComponent } from './items/upload-detail/upload-detail.component';
 import { UploadService } from './items/shared/upload.service';
@@ -21,8 +22,11 @@ import { CreateComponent } from './items/create/create.component';
 import { ItemComponent } from './items/item/item.component';
 import { UploadFormComponent } from './items/upload-form/upload-form.component';
 import { UploadListPipe } from './items/shared/upload-list.pipe';
-import { FormConstructorComponent } from './form-constructor/form-constructor.component';
-import { FormCreaterComponent } from './form-creater/form-creater.component';
+import { FormConstructorComponent } from './form/form-constructor/form-constructor.component';
+import { FormCreaterComponent } from './form/form-creater/form-creater.component';
+import { FormResultComponent } from './form/form-result/form-result.component';
+import { FormResultDetailComponent } from './form/form-result/form-result-detail/form-result-detail.component';
+
 
 
 @NgModule({
@@ -40,7 +44,9 @@ import { FormCreaterComponent } from './form-creater/form-creater.component';
     UploadsListComponent,
     UploadListPipe,
     FormConstructorComponent,
-    FormCreaterComponent
+    FormCreaterComponent,
+    FormResultComponent,
+    FormResultDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,7 @@ import { FormCreaterComponent } from './form-creater/form-creater.component';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule
   ],
-  providers: [ItemService, UploadService, FormConstructorService, FormCreaterService],
+  providers: [ItemService, UploadService, FormConstructorService, FormCreaterService,FormResultService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
