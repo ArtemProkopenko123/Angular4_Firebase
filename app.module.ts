@@ -1,3 +1,4 @@
+import { FormCreaterService } from './form-creater/shared/form-creater.service';
 import { FormConstructorService } from './form-constructor/shared/form-constructor.service';
 import { UploadsListComponent } from './items/uploads-list/uploads-list.component';
 import { UploadDetailComponent } from './items/upload-detail/upload-detail.component';
@@ -21,6 +22,7 @@ import { ItemComponent } from './items/item/item.component';
 import { UploadFormComponent } from './items/upload-form/upload-form.component';
 import { UploadListPipe } from './items/shared/upload-list.pipe';
 import { FormConstructorComponent } from './form-constructor/form-constructor.component';
+import { FormCreaterComponent } from './form-creater/form-creater.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { FormConstructorComponent } from './form-constructor/form-constructor.co
     UploadDetailComponent,
     UploadsListComponent,
     UploadListPipe,
-    FormConstructorComponent
+    FormConstructorComponent,
+    FormCreaterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import { FormConstructorComponent } from './form-constructor/form-constructor.co
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule
   ],
-  providers: [ItemService, UploadService, FormConstructorService],
+  providers: [ItemService, UploadService, FormConstructorService, FormCreaterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

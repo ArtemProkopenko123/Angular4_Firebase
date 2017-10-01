@@ -1,0 +1,30 @@
+.formWrap{
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.formWrap span.red{
+    color: red;
+    font-weight: bold
+}
+.formWrap label{
+    display: block;
+    width: 100%;
+}
+.formWrap label input, 
+.formWrap label textarea{
+    width: 100%;
+}
+.formWrap label textarea{
+    min-height: 40px;
+    max-height: 300px;
+}
+
+.formWrap input[type='checkbox'] {
+    display: inline;
+    width: auto !important;
+}
+.formWrap .error {
+    border: 1px  solid red;
+}

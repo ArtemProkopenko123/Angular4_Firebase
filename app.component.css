@@ -1,3 +1,6 @@
 header{
     background-color: lightslategray
 }
+header .nav-item a {
+    color: #FFFFFF !important;
+}

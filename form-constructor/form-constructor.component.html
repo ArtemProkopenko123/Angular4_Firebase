@@ -1,74 +1,91 @@
 <h1>FORMS CONSTRUCTOR</h1>
-
-<button class="btn" [class.active]="start" (click)="start = !start">Add</button>
-
+<div class="text-center">
+  <h3 *ngIf="success" >Your form was saved and now available by Id: <span class="red">{{success}}</span>.</h3>
+</div>
+<br>
 <div class="row">
-  <div *ngIf="start" id="formWrap" class="col-md-6">
+  <div id="formWrap" class="col-md-6">
     <label>
-      <b>Id</b> of form<span class="red">*</span>: <input type="text" [(ngModel)]="form.id" required>
-    </label>
-    <label>
-      <b>Title</b> of form<span class="red">*</span> <input type="text" [(ngModel)]="form.title" required>
+      <b>Id of form</b><span class="red">*</span>: <small>(Needs for call this form)</small><input  class="form-control" id="idInput" type="text" [(ngModel)]="form.id" required>
     </label>
     <label>
-      <b>Text</b> in form: <input type="text" [(ngModel)]="form.massageInForm">
+      <b>Title of form</b><span class="red">*</span> <input id="titleInput"  class="form-control" type="text" [(ngModel)]="form.title" required>
     </label>
-    
-    <!--
     <label>
-      <b>Select tag name:</b>
-      <select [(ngModel)]="form.inputs.tagName" required>
-        <option value="input" selected>Input</option>
-        <option value="textarea" selected>textarea</option>
-      </select>
+      <b>Text in form</b> : <input class="form-control" type="text" [(ngModel)]="form.massageInForm">
     </label>
-    <label *ngIf="form.inputs.tagName == 'input'">
-      <b>Select type of input</b>
-      <select [(ngModel)]="form.inputs.type" required>
-        <option value="text" selected>Text</option>
-        <option value="checkbox" selected>Checkbox</option>
-        <option value="file" selected>File</option>
-        <option value="password" selected>Password</option>
-      </select>
+    <label>
+      <b>Text in Submit btn</b>: <input class="form-control" type="text" [(ngModel)]="form.btnSubmitText" >
     </label>
-    <label *ngIf="form.inputs.tagName">
-        Enter placeholder: <input type="text" [(ngModel)]="form.inputs.placeholder">
+    <label>
+      <b>Reset btn</b>: <input  class="form-control" type="checkbox" [(ngModel)]="form.resetBtn ">
     </label>
-    <label *ngIf="form.inputs.tagName">
-        Enter text before input field: <input type="text" [(ngModel)]="form.inputs.inputText">
-    </label>
-  -->
-    <button  (click)="addInput()">
+    <hr>
+    <div *ngFor="let new of newField; let k = index">
+      <label>
+        <b>Select tag name</b>:
+        <select class="form-control" [(ngModel)]="new.tagName" required>
+          <option value="input" selected>Input</option>
+          <option value="textarea" selected>textarea</option>
+        </select>
+      </label>
+      <label *ngIf="new.tagName == 'input'">
+        <b>Select type of input</b>:
+        <select class="form-control" [(ngModel)]="new.type" required>
+          <option value="text" selected>Text</option>
+          <option value="checkbox" selected>Checkbox</option>
+          <option value="file" selected>File</option>
+          <option value="password" selected>Password</option>
+        </select>
+      </label>
+      <label *ngIf="new.tagName">
+          <b>Required</b>: <input  class="form-control" type="checkbox" [(ngModel)]="new.require">
+        </label>
+      <label *ngIf="new.tagName">
+          <b>Enter placeholder</b>: <input class="form-control" type="text" [(ngModel)]="new.placeholder">
+      </label>
+      <label *ngIf="new.tagName">
+            <b>Enter text before input field</b>: <input class="form-control" type="text" [(ngModel)]="new.inputText">
+      </label>
+    </div>
+    <button *ngIf="newField.length > 0" class="btn btn-danger"  (click)="removeInput()">
+        Remove field
+      </button>
+    <button class="btn btn-primary"  (click)="addInput()">
       Add field
     </button>
-    <button>Save</button>
-
-
-    <div *ngFor="let new of form.inputs; let k = index">
-      <input type="text" [(ngModel)]="new[k].placeholder" >
-    {{new[k].placeholder}}
+    <div class="text-right">
+      <button class="btn btn-success" (click)="saveForm()">Save</button>
     </div>
-
   </div>
 
-
-
-
-
-
-
-  <div class="col-md-6 Formpreview" *ngIf="start">
-
+<!--======== PREVIEW  ============-->
+  <div class="col-md-6 Formpreview" >
     Form preview. <span *ngIf="form.id">Id: {{form.id}}</span>
     <div *ngIf="form.title" class="title text-center"><h4>{{form.title}}</h4></div>
     <p class="text-center" *ngIf="form.massageInForm">{{form.massageInForm}}</p>
-<!--
-    <div *ngIf="form.inputs.tagName == 'input'">
-      <label><span *ngIf="form.inputs.inputText">{{form.inputs.inputText}}:</span>
-          <input type="{{form.inputs.type}}" placeholder="{{form.inputs.placeholder}}">
-      </label>
-      <div [innerHtml]="htmlText"></div>
+    
+    <div *ngFor="let new of newField; let k = index">
+      <div *ngIf="new.tagName == 'input'">
+        <label>
+          <span *ngIf="new.inputText">{{new.inputText}}<span class="red" *ngIf="new.require">*</span>:</span>
+          <input  class="form-control" type="{{new.type}}" placeholder="{{new.placeholder}}" [attr.required]="new.require ? new.require: undefined">
+        </label>
+      </div>
+      <div *ngIf="new.tagName == 'textarea'">
+          <label>
+            <span *ngIf="new.inputText">{{new.inputText}}<span class="red" *ngIf="new.require">*</span>:</span>
+            <textarea placeholder="{{new.placeholder}}" [attr.required]="new.require ? new.require: undefined"></textarea>
+          </label>
+        </div>
     </div>
-  -->
-  </div>
+    <div class="float-right">
+      <button class="btn btn-default" *ngIf="form.resetBtn">Reset</button>
+      <button class="btn btn-success">{{form.btnSubmitText}}</button>
+    </div>
+    </div>
 </div>
+
+
+
+

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ItemService } from '../shared/item.service';
 import { Item } from '../shared/item';
 @Component({
@@ -6,7 +6,7 @@ import { Item } from '../shared/item';
   templateUrl: './item-detail.component.html',
   styleUrls: ['./item-detail.component.css']
 })
-export class ItemDetailComponent implements OnInit {
+export class ItemDetailComponent {
 
   @Input() item: Item;
   constructor(private itemSvc: ItemService) {}
@@ -22,8 +22,4 @@ export class ItemDetailComponent implements OnInit {
   deleteItem() {
    this.itemSvc.deleteItem(this.item.$key)
   }
-
-  ngOnInit() {
-  }
-
 }

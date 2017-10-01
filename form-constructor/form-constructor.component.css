@@ -10,13 +10,21 @@ span.red{
     display: block;
 }
 #formWrap label input, 
-.Formpreview label input{
+.Formpreview label input,
+.Formpreview label textarea{
     width: 100%;
+}
+.Formpreview label textarea{
+    min-height: 30px;
+    max-height: 500px;
 }
 .Formpreview{
     border-left: 1px solid #969696;
 }
-input[type='checkbox']{
+input[type='checkbox'] {
     display: inline;
     width: auto !important;
+}
+.error {
+    border: 1px  solid red;
 }

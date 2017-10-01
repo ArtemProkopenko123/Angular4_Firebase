@@ -1,0 +1,30 @@
+
+<div class="col-md-12 formWrap" [attr.id]="formValue.id"  >
+
+  <div class="title text-center"><h4>{{formValue.title}}</h4></div>
+
+  <p class="text-center">
+    {{formValue.massageInForm}}
+  </p>
+  <div *ngIf="formValue.inputs">
+    <div *ngFor="let new of formValue.inputs">
+      <div *ngIf="new.tagName == 'input'">
+        <label>
+          <span *ngIf="new.inputText">{{new.inputText}}<span class="red" *ngIf="new.require">*</span>:</span>
+          <input  class="form-control" type="{{new.type}}" placeholder="{{new.placeholder}}" [attr.required]="new.require ? new.require: undefined" (focus)="focusFunction($event)">
+        </label>
+      </div>
+      <div *ngIf="new.tagName == 'textarea'">
+        <label>
+          <span *ngIf="new.inputText">{{new.inputText}}<span class="red" *ngIf="new.require">*</span>:</span>
+          <textarea class="form-control" placeholder="{{new.placeholder}}" [attr.required]="new.require ? new.require: undefined" (focus)="focusFunction($event)"></textarea>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="text-right">
+    <button class="btn btn-default" *ngIf="formValue.resetBtn" (click)="resetForm()">Reset</button>
+    <button class="btn btn-success" *ngIf="formValue.btnSubmitText" (click)="checkForm()">{{formValue.btnSubmitText}}</button>
+  </div>
+</div>
+  
