@@ -6,10 +6,16 @@
   </p>
   <div *ngIf="formValue.inputs">
     <div *ngFor="let new of formValue.inputs">
-      <div *ngIf="new.tagName == 'input'">
+      <div *ngIf="new.tagName == 'input' && new.type !== 'checkbox'">
         <label>
           <span *ngIf="new.inputText">{{new.inputText}}<span class="red" *ngIf="new.require">*</span>:</span>
-          <input  class="form-control" type="{{new.type}}" [(ngModel)]="new.value" placeholder="{{new.placeholder}}" [attr.required]="new.require ? new.require: undefined" (focus)="focusFunction($event)">
+          <input class="form-control" type="{{new.type}}" [(ngModel)]="new.value" placeholder="{{new.placeholder}}" [attr.required]="new.require ? new.require: undefined" (focus)="focusFunction($event)">
+        </label>
+      </div>
+      <div *ngIf="new.type == 'checkbox'">
+        <label>
+          <span *ngIf="new.inputText">{{new.inputText}}<span class="red" *ngIf="new.require">*</span>:</span>
+          <input class="form-control" type="{{new.type}}" [(ngModel)]="new.value" [attr.required]="new.require ? new.require: undefined" (focus)="focusFunction($event)" (click)="new.value = !new.value">
         </label>
       </div>
       <div *ngIf="new.tagName == 'textarea'">

@@ -5,11 +5,10 @@ import { AngularFireDatabase,FirebaseListObservable,FirebaseObjectObservable } f
 @Injectable()
 export class FormResultService {
 
-  private basePath: string = '/formsResult';
+  protected basePath: string = '/formsResult';
   
   formsRes: FirebaseListObservable<Form[]> = null; // list of objects
-  formRes: FirebaseObjectObservable<Form> = null; // single object
-    
+
   constructor(private db: AngularFireDatabase) {}
 
   getFormsResultsList(query={}): FirebaseListObservable<Form[]> {
@@ -17,6 +16,12 @@ export class FormResultService {
       query: query
     });
     return this.formsRes
+  }
+
+   // Deletes a single item
+  deleteResult(formId: string,key: string): void {
+    this.db.list(`${this.basePath}/${formId}`).remove(key)
+        .catch(error => this.handleError(error))
   }
   // Deletes the entire list of items
   deleteAll(): void {

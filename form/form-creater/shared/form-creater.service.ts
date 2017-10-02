@@ -7,8 +7,8 @@ import { AngularFireDatabase,FirebaseListObservable,FirebaseObjectObservable } f
 @Injectable()
 export class FormCreaterService {
 
-  private basePath: string = '/formsConstuctor/';
-  private formsResult: string = '/formsResult';
+  protected basePath: string = '/formsConstuctor/';
+  protected formsResult: string = '/formsResult';
   form: FirebaseObjectObservable<Form> = null; // single form
 
   constructor(private db: AngularFireDatabase) {}
@@ -31,7 +31,9 @@ export class FormCreaterService {
       document.getElementById(form.id).getElementsByClassName('form-control'))
       .forEach(function (el) {
         if(el.hasAttribute('required')){
-          if(!el.value) {
+          if(!el.value && el.type !== "checkbox") {
+            el.classList.add('error');
+          } else if(el.type == "checkbox" && el.checked == false){
             el.classList.add('error');
           }
         }

@@ -59,12 +59,12 @@ export class UploadService {
 // Writes the file details to the realtime db
   private saveFileData(upload: Upload) {
     this.db.list('/items/').update(upload.items, {picture:upload.url});
-    this.db.list(this.basePath).push(upload);
+    this.uploads.push(upload);
   }
 
 // Delete from BD
   private deleteFileData(upload: Upload) {
-    return this.db.list(`${this.basePath}/`).remove(upload.$key), this.db.list('/items/').update(upload.items, {picture: ''});
+    return this.uploads.remove(upload.$key), this.db.list('/items/').update(upload.items, {picture: ''});
   }
 // Delete from Storage
   private deleteFileStorage(name:string) {

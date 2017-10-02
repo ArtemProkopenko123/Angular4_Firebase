@@ -1,4 +1,4 @@
-<div id="sort-btn">Soted by: 
+<div id="sort-btn"><br>Soted by: 
   <button class="btn " [class.active]="filterBy==' '" (click)="filterBy=''">Reset</button> 
   
   <button class="btn" *ngIf="filterBy !== 'date'" [class.active]="filterBy=='dateRev' || filterBy=='dateRev'" (click)="filterBy='date'">Date
@@ -15,8 +15,9 @@
   <button class="btn" *ngIf="filterBy == 'name'"  [class.active]="filterBy=='name'" (click)="filterBy='nameRev'">Form name
       <img src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-down-01-16.png" alt="">
     </button>
+    <button  class="btn btn-primary" (click)='deleteItems()'>Delete Entire List</button>
 </div>
-
-<div class="col-md-12" *ngFor="let formRes of formsRes | async" >
+<br>
+<div class="col-md-12" *ngFor="let formRes of formsRes | async " >
   <form-result-detail [formResult]='formRes'></form-result-detail>
 </div>

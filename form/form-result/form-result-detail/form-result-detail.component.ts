@@ -11,12 +11,17 @@ FormResultService
 })
 export class FormResultDetailComponent implements OnInit {
   
-  @Input() formResult: FirebaseObjectObservable<Form>;
-
+  @Input() formResult: FirebaseObjectObservable<Form[]>;
+  resultVal = Array();
   constructor(private formSvc: FormResultService) { }
 
   ngOnInit() {
-    console.log( this.formResult);
+    for(let val in this.formResult){
+      this.formResult[val].$key = val;
+      this.resultVal.push( this.formResult[val]);  
+    };
   }
-
+  deleteResult(formId:string,key:string){
+    this.formSvc.deleteResult(formId,key)
+  }
 }

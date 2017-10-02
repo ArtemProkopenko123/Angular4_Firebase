@@ -1,6 +1,24 @@
-{{formResult}}
-<div *ngFor="let t of array">
-  <div>
-    <div>AAAA</div>
+
+<ul class="ul_formDataWrap" width="100%" *ngFor="let form of resultVal | test">
+  <div class="row">
+    <div class="col-md-6 float-left">
+      <li><strong>Form ID: {{form.id}}</strong></li>
+      <li>Date: {{form.timeStamp | date: 'medium'}}</li>
+      <br>
+      <li><button (click)='deleteResult(form.id,form.$key)' >Delete</button></li>
+    </div>
+    <div class="col-md-6 float-right">
+      <li><strong>Questions:</strong>
+        <ul>
+            <li *ngFor="let input of form.inputs"> {{input.inputText}}: 
+              <span> {{input.value | booleanPipe}}
+                <span *ngIf="input.type == 'checkbox' && !input.value">No</span>
+              </span>
+            </li> 
+        </ul>
+      </li>
+    </div>
   </div>
-</div>
+  <hr>
+</ul>  
+

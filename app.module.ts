@@ -26,6 +26,7 @@ import { FormConstructorComponent } from './form/form-constructor/form-construct
 import { FormCreaterComponent } from './form/form-creater/form-creater.component';
 import { FormResultComponent } from './form/form-result/form-result.component';
 import { FormResultDetailComponent } from './form/form-result/form-result-detail/form-result-detail.component';
+import { FormResultsPipe, TestPipe } from './form/form-result/shared/form-results.pipe';
 
 
 
@@ -46,7 +47,9 @@ import { FormResultDetailComponent } from './form/form-result/form-result-detail
     FormConstructorComponent,
     FormCreaterComponent,
     FormResultComponent,
-    FormResultDetailComponent
+    FormResultDetailComponent,
+    FormResultsPipe,
+    TestPipe
   ],
   imports: [
     BrowserModule,
