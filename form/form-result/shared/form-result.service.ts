@@ -13,14 +13,16 @@ export class FormResultService {
 
   getFormsResultsList(query={}): FirebaseListObservable<Form[]> {
     this.formsRes = this.db.list(this.basePath, {
-      query: query
-    });
+      query: {query}
+    })
     return this.formsRes
   }
-
+  changeStatus(key:string, newStatus:any){
+    this.formsRes.update(key, newStatus)
+  }
    // Deletes a single item
-  deleteResult(formId: string,key: string): void {
-    this.db.list(`${this.basePath}/${formId}`).remove(key)
+  deleteResult(key: string): void {
+    this.formsRes.remove(key)
         .catch(error => this.handleError(error))
   }
   // Deletes the entire list of items

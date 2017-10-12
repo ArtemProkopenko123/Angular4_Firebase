@@ -35,13 +35,15 @@ export class FormConstructorComponent implements OnInit {
     }
     if(this.form.id &&this.form.title){
       this.form.inputs = this.newField;
-      this.formSvc.saveForm( this.form);
-      this.success = this.form.id;
-      this.form = new Form(); 
-      this.newField = Array();
-      this.form.btnSubmitText = "Send";
-      this.form.title = "Form title";
-      this.form.massageInForm = "Text";
+      new Promise((resolve)=> resolve(this.formSvc.saveForm( this.form))).then(()=>{
+        this.success = this.form.id;
+        this.form = new Form(); 
+        this.newField = Array();
+        this.form.btnSubmitText = "Send";
+        this.form.title = "Form title";
+        this.form.massageInForm = "Text";
+      })
+ 
     }
   }
 }

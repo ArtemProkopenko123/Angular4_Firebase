@@ -10,12 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormResultComponent implements OnInit  {
 
-  formsRes: FirebaseListObservable<Form[]>;
+  formsRes : FirebaseListObservable<Form[]>;
 
-  constructor(private formSvc: FormResultService) { }
-  ngOnInit() {
-    this.formsRes = this.formSvc.getFormsResultsList({limitToLast: 10});
-    
+  constructor(private formSvc: FormResultService) {}
+  ngOnInit() { 
+    this.formsRes = this.formSvc.getFormsResultsList();
+
   }
 
   deleteItems() {

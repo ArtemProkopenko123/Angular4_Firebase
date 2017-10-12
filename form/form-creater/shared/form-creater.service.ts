@@ -1,7 +1,7 @@
 import { Form } from './../../form-constructor/shared/form';
 import { Injectable } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { AngularFireDatabase,FirebaseListObservable,FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase,FirebaseObjectObservable } from 'angularfire2/database';
 
 
 @Injectable()
@@ -13,8 +13,7 @@ export class FormCreaterService {
 
   constructor(private db: AngularFireDatabase) {}
   getForm(key: string): FirebaseObjectObservable<Form> {
-    const itemPath =  `${this.basePath}/${key}`;
-    this.form = this.db.object(itemPath)
+    this.form = this.db.object(`${this.basePath}/${key}`);
     return this.form 
   }
   //Reset inputs
@@ -45,7 +44,7 @@ export class FormCreaterService {
   private saveForm(form: Form) {
     //Save result to db
     form.timeStamp = new Date().getTime();
-    this.db.list(`${this.formsResult}/${form.$key}`).push(form)
+    this.db.list(`${this.formsResult}/`).push(form)
       .catch(error => this.handleError(error));
   //Msg to user
     let myContainer = <HTMLElement> document.getElementById(form.id);

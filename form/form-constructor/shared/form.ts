@@ -1,5 +1,5 @@
 export class Form {
-    $key: string;
+    $key: string ;
     id: any;
     title: string;
     massageInForm: string;
@@ -8,6 +8,7 @@ export class Form {
     btnSubmitText: string;
     resetBtn: true;
     timeStamp: number;
+    status: string;
 };
 
 export class FormInput {

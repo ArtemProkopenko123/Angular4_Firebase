@@ -9,15 +9,15 @@ import { FormCreaterService } from './shared/form-creater.service';
 
 export class FormCreaterComponent  implements OnInit {
 
-  @Input() studentMsg : string; 
+  @Input() formId : string; 
 
   formValue: Form = new Form;
   
   constructor(private formSvc: FormCreaterService ) {}
 
   ngOnInit(){
-    this.formSvc.getForm(this.studentMsg).subscribe(
-      res => this.formValue = res
+    this.formSvc.getForm(this.formId).subscribe(
+      res => {if(res.id){ this.formValue = res} else { console.error("Can not find form by this ID")}}
     );
   }
   resetForm(){

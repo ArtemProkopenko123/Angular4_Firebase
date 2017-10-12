@@ -18,6 +18,6 @@
     <button  class="btn btn-primary" (click)='deleteItems()'>Delete Entire List</button>
 </div>
 <br>
-<div class="col-md-12" *ngFor="let formRes of formsRes | async " >
-  <form-result-detail [formResult]='formRes'></form-result-detail>
+<div id="formDetailWrap">
+  <form-result-detail *ngFor="let formRes of formsRes | formsResultPipe:filterBy | async "  [attr.data-id]="formRes.id" [attr.data-time]="formRes.timeStamp" [formResult]='formRes'></form-result-detail>
 </div>

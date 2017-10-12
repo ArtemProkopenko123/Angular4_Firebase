@@ -8,9 +8,10 @@ export class FormConstructorService {
   
   constructor(private db: AngularFireDatabase) {}
 
-  saveForm(form:Form): void  {
+  saveForm(form:Form)  {
     this.db.list(`${this.basePath}`).set(form.id,form)
       .catch(error => this.handleError(error));
+      return true;
   }
 
    //  error handling 

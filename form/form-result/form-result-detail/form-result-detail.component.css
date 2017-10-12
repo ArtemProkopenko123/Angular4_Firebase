@@ -2,3 +2,26 @@
 .ul_formDataWrap li {
     list-style-type: none;
 }
+.ul_formDataWrap .btn-success,
+.ul_formDataWrap .btn-warning {
+    margin: 0 5px;
+}
+
+.ul_formDataWrap.close {
+    float: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-shadow:inherit;
+    opacity: .4;
+}
+.ul_formDataWrap.processing {
+    float: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-shadow:inherit;
+    background: rgb(253, 253, 141)
+}

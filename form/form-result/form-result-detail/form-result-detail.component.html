@@ -1,23 +1,29 @@
 
-<ul class="ul_formDataWrap" width="100%" *ngFor="let form of resultVal | test">
+<ul class="ul_formDataWrap" [ngClass]="formResult.status" width="100%">
+
   <div class="row">
-    <div class="col-md-6 float-left">
-      <li><strong>Form ID: {{form.id}}</strong></li>
-      <li>Date: {{form.timeStamp | date: 'medium'}}</li>
+    <ul class="col-md-6 float-left">
+      <li><strong>Form ID: {{formResult.id}}</strong></li>
+      <li>Date: {{formResult.timeStamp | date: 'medium'}}</li>
       <br>
-      <li><button (click)='deleteResult(form.id,form.$key)' >Delete</button></li>
-    </div>
-    <div class="col-md-6 float-right">
+      <li><button class="btn  btn-danger" (click)='deleteResult(formResult.$key)' >Delete</button></li>
+      
+    </ul>
+    <ul class="col-md-6 float-right">
       <li><strong>Questions:</strong>
         <ul>
-            <li *ngFor="let input of form.inputs"> {{input.inputText}}: 
-              <span> {{input.value | booleanPipe}}
-                <span *ngIf="input.type == 'checkbox' && !input.value">No</span>
+            <li *ngFor="let input of formResult.inputs"> {{input.inputText}}: 
+              <span> {{input.value || 'No answer' | booleanPipe}}
+                <span *ngIf="input.type == 'checkbox' && !input.value"></span>
               </span>
             </li> 
         </ul>
       </li>
-    </div>
+    </ul>
+    <div class="text-right float-right col-md-12">Status: <b>{{formResult.status}} </b>
+      <button *ngIf="formResult.status != 'open'" class="btn btn-info" (click)='changeStatus(formResult.$key,"open")' >Open</button>
+      <button *ngIf="formResult.status != 'in processing'" class="btn btn-warning" (click)='changeStatus(formResult.$key,"in processing")' >In processing</button>
+      <button *ngIf="formResult.status != 'close'" class="btn btn-success" (click)='changeStatus(formResult.$key,"close")'>Close</button></div>
   </div>
   <hr>
 </ul>  
