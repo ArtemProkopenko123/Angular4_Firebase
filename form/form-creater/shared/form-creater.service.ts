@@ -44,6 +44,7 @@ export class FormCreaterService {
   private saveForm(form: Form) {
     //Save result to db
     form.timeStamp = new Date().getTime();
+    form.priority = form.timeStamp * (-1);
     this.db.list(`${this.formsResult}/`).push(form)
       .catch(error => this.handleError(error));
   //Msg to user

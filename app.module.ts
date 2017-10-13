@@ -28,8 +28,6 @@ import { FormResultComponent } from './form/form-result/form-result.component';
 import { FormResultDetailComponent } from './form/form-result/form-result-detail/form-result-detail.component';
 import { FormResultsPipe, FormsResultPipe } from './form/form-result/shared/form-results.pipe';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -9,6 +9,7 @@ export class Form {
     resetBtn: true;
     timeStamp: number;
     status: string;
+    priority: number;
 };
 
 export class FormInput {

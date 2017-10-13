@@ -19,5 +19,7 @@
 </div>
 <br>
 <div id="formDetailWrap">
-  <form-result-detail *ngFor="let formRes of formsRes | formsResultPipe:filterBy | async "  [attr.data-id]="formRes.id" [attr.data-time]="formRes.timeStamp" [formResult]='formRes'></form-result-detail>
+  <form-result-detail *ngFor="let formRes of formsRes | formsResultPipe:filterBy"  [attr.data-id]="formRes.id" [attr.data-time]="formRes.timeStamp" [formResult]='formRes'></form-result-detail>
 </div>
+
+<div class="text-center"><button class=" btn btn-primary" (click)="loadMore()">More</button></div><br><br>

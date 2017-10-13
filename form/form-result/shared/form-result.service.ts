@@ -13,7 +13,7 @@ export class FormResultService {
 
   getFormsResultsList(query={}): FirebaseListObservable<Form[]> {
     this.formsRes = this.db.list(this.basePath, {
-      query: {query}
+      query: query
     })
     return this.formsRes
   }
